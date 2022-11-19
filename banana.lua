@@ -1,4 +1,4 @@
-local repo = 'https://raw.githubusercontent.com/gobboo/banana/main/'
+local repo = 'https://raw.githubusercontent.com/gobboo/banana/master/'
 
 local Library = loadstring(game:HttpGet(repo .. 'lib/lib.lua'))()
 local Util = loadstring(game:HttpGet(repo .. 'lib/util.lua'))()
