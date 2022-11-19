@@ -1,4 +1,4 @@
-local repo = 'https://raw.githubusercontent.com/gobboo/banana/master/'
+local repo = 'https://raw.githubusercontent.com/gobboo/banana/main/'
 
 local Library = loadstring(game:HttpGet(repo .. 'lib/lib.lua'))()
 local Util = loadstring(game:HttpGet(repo .. 'lib/util.lua'))()
@@ -171,27 +171,36 @@ Library.ToggleKeybind = Options.MenuKeybind -- Allows you to have a custom keybi
 -- Update Thread
 task.spawn(function()
     while true do
-        task.wait(0.1)
+        task.wait(1)
         if Library.Unloaded then break end
 
         local autoChest = Toggles.AutoOpen.Value
         if autoChest then
             Util:OpenChests()
         end
+    end
+end)
+
+task.spawn(function()
+    while true do
+        task.wait(0.5)
+        if Library.Unloaded then break end
 
         local AutoCollect = Toggles.AutoCollect.Value
         if AutoCollect then
             Util:CollectAllDrops()
         end
+    end
+end)
 
-        local autoMine = Toggles.AutoMine.Value
-        if autoMine then
+task.spawn(function()
+    while true do
+        task.wait(0.2)
+        if Library.Unloaded then break end
+
+        local AutoMine = Toggles.AutoMine.Value
+        if AutoMine then
             Util:BreakClosest()
-        end
-
-        local autoSwing = Toggles.AutoSwing.Value
-        if autoSwing then
-            Util:SwingPickaxe()
         end
     end
 end)
